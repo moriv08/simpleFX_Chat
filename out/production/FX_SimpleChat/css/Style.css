@@ -1,0 +1,16 @@
+#btn1{
+    -fx-background-color: salmon;
+
+}
+
+#textArea {
+    -fx-font-size: 25px;
+    -fx-text-fill: brown;
+    -fx-background-color: white;
+
+}
+
+#textField{
+    -fx-text-fill: green;
+}
+
