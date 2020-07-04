@@ -35,6 +35,7 @@ public class ClientHandler {
                         }
                         server.broadcastMsg(msg);
                     }catch (IOException e){
+
                         System.err.println("Exeption");
                     }
                 }

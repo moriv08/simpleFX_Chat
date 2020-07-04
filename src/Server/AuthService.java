@@ -3,6 +3,7 @@ package Server;
 import java.sql.*;
 
 public class AuthService {
+
     private static Connection connection;
     private static Statement stmt;
 

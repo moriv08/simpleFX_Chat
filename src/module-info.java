@@ -3,5 +3,6 @@ module FX.SimpleChat {
     requires javafx.controls;
     requires java.sql;
 
+
     opens sample;
 }

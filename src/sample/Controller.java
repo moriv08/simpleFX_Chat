@@ -67,6 +67,7 @@ public class Controller implements Initializable{
 //    }
 
     public void sendMsg() {
+
         try {
             out.writeUTF(textField.getText());
             textField.clear();

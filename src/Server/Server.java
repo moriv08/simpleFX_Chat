@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Server {
+
     private Vector<ClientHandler> clients;
 
 
