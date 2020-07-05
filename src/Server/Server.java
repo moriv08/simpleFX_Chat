@@ -1,25 +1,20 @@
 package Server;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.SQLException;
-import java.util.Scanner;
 import java.util.Vector;
 
 public class Server {
 
     private Vector<ClientHandler> clients;
 
-
     public Server() {
         clients = new Vector<>();
         ServerSocket server = null;
         Socket socket;
         try {
-            server = new ServerSocket(8180);
+            server = new ServerSocket(8189);
             System.out.println("Server started");
 
             while (true) {
@@ -28,21 +23,16 @@ public class Server {
             }
 
         } catch (IOException e) {
-            System.out.println("AAAAAAAAA");
+            System.err.println("Exeption in server constructor");
             e.printStackTrace();
         }
-//        finally {
-//            try{
-//                server.close();
-//            }catch (IOException e){
-//                e.printStackTrace();
-//            }
-//            try {
-//                socket.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        finally {
+            try{
+                server.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     public void broadcastMsg(String msg){
@@ -50,7 +40,9 @@ public class Server {
             client.sendClientMsg(msg);
     }
 
-
+    public void removeClient(ClientHandler client){
+        clients.remove(client);
+    }
 
 //    public Server() throws SQLException {
 ////        clients = new Vector<>();

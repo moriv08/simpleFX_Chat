@@ -1,3 +1,5 @@
+/*
+
 module FX.SimpleChat {
     requires javafx.fxml;
     requires javafx.controls;
@@ -5,4 +7,4 @@ module FX.SimpleChat {
 
 
     opens sample;
-}
+}*/
