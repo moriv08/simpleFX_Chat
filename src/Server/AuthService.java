@@ -22,10 +22,8 @@ public class AuthService {
         String qry = String.format("SELECT nickname FROM main where login = '%s' and password = '%s'", login, pass);
         ResultSet rs = stmt.executeQuery(qry);
 
-        if (rs.next()) {
+        if (rs.next())
             return rs.getString(1);
-        }
-
         return null;
     }
 
