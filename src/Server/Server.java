@@ -64,9 +64,15 @@ public class Server {
     public void sendPersonalMsg(ClientHandler from, String recipient, String msg){
         for (ClientHandler client: clients) {
             if (client.getNick().equals(recipient)){
-                client.sendMsg("from: " + from.getNick() + "\n to you: " + msg);
-                from.sendMsg("You to " + client.getNick() + " " + msg);
-                return;
+                client.hoIsIn(client.getNick());
+                from.hoIsIn(recipient);
+                if (from.isBlackList(recipient)) {
+                    from.sendMsg(from.getNick() + " to " + recipient);
+                }
+                if (!from.isBlackList(recipient))
+                    client.sendMsg("from " + from.getNick() + "\n to you: " + msg);
+                    from.sendMsg("you to " + client.getNick() + ": " + msg);
+                    return;
             }
         }
         from.sendMsg("There are no user " + recipient + " in the chat now (");

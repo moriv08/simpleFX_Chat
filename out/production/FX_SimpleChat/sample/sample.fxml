@@ -6,14 +6,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<!--<?scenebuilder-stylesheet /css/Style.css?>-->
-
-<!--<?import javafx.scene.control.PasswordField?><?import javax.print.DocFlavor.URL?>-->
-
-<?import java.net.URL?>
 <?import javafx.scene.control.PasswordField?>
 <VBox fx:id="vBox" alignment="center" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.Controller">
-<!--    <stylesheets><URL value="@/css/Style.css" /> </stylesheets>-->
     <HBox fx:id="upperPanel">
         <TextField HBox.hgrow="ALWAYS" promptText="login" fx:id="loginField" />
         <PasswordField promptText="Password" fx:id="passwordField" onAction="#tryToAuth"/>

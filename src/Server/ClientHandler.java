@@ -7,6 +7,8 @@ import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static java.lang.String.valueOf;
+
 public class ClientHandler {
 
     private Socket socket;
@@ -50,15 +52,41 @@ public class ClientHandler {
                         if (str.equals("/end")) {
                             out.writeUTF("/serverClosed");
                             break;
-                        } else if (str.startsWith("/w")) {
-                            String[] tokens = str.split(" ", 3);
+                        }
+                        String[] tokens = str.split(" ", 3);
+
+                        if (tokens[0].equals("/w")) {
                             if (tokens.length == 3)
                                 server.sendPersonalMsg(this, tokens[1], tokens[2]);
-                        } else if (str.startsWith("/bl")){
-                            String[] tokens = str.split(" ", 2);
-                            blackList.add(tokens[1]);
-                        }else
+                        }
+                        else if (tokens[0].equals("/blin")) {
+                            if (tokens.length == 2)
+                                blackList.add(tokens[1]);
+                        }
+                        else if (tokens[0].equals("/blout")) {
+                            if (tokens.length == 2)
+                                blackList.remove(tokens[1]);
+                        }
+                        else
                             server.broadcastMsg(this, nick + ": " + str);
+
+
+//                        else if (str.startsWith("/w")) {
+//                            String[] tokens = str.split(" ", 3);
+//                            if (tokens.length == 3)
+//                                server.sendPersonalMsg(this, tokens[1], tokens[2]);
+//                        } else if (str.startsWith("/bl")){
+//                            sendMsg("Blout!!!!!!!");
+//                            String[] tokens = str.split(" ", 2);
+//                            if(tokens.length == 2)
+//                                blackList.add(tokens[1]);
+//                        } else if (str.startsWith("/blOut")){
+//                            String[] tokens = str.split(" ", 2);
+//                            if(tokens.length == 2)
+//                                blackList.remove(tokens[1]);
+//                        }
+//                        else
+//                            server.broadcastMsg(this, nick + ": " + str);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -103,6 +131,10 @@ public class ClientHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void hoIsIn(String name){
+        System.out.println("in " + this.nick + " black list " + " there are " + blackList);
     }
 
 }
